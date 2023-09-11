@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card-header">
+    <h1>Todo List</h1>
+</div>
+<div class="card-body">
+    <a asp-action="CreateTask" asp-controller="Mantenedor" class="btn btn-warning"> <i class="bi bi-person-plus"></i>Add a new task</a>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>¿Is completed?</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.DueDate</td>
+                    <td>@item.IsCompleted</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Mantenedor" class="btn btn-primary btn-sm" asp-route-Id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                        <a asp-action="Delete" asp-controller="Mantenedor" class="btn btn-danger btn-sm" asp-route-Id="@item.Id"><i class="bi bi-person-dash"></i>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+</div>

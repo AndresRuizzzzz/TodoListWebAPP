@@ -1,0 +1,42 @@
+﻿@model TodoList1.Models.TaskItem
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar Tarea</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DueDate">Complete Date</label>
+        <input asp-for="DueDate" type="datetime-local" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsCompleted">¿Is Completed?</label>
+        <input asp-for="IsCompleted" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save changes" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="List">Back to Todo List</a>
+</div>
